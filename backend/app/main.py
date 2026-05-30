@@ -4,6 +4,8 @@ from app.routers import companies, audit
 from app.database import engine, Base
 import os
 
+from app.routers import products,sales
+
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
@@ -27,6 +29,8 @@ app.add_middleware(
 # Include routers
 app.include_router(companies.router)
 app.include_router(audit.router)
+app.include_router(products.router)
+app.include_router(sales.router)
 
 @app.get("/")
 def root():
